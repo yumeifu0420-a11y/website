@@ -1,0 +1,87 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { readFile, access } from "node:fs/promises";
+import { constants } from "node:fs";
+
+const pagePath = new URL("../app/page.tsx", import.meta.url);
+const layoutPath = new URL("../app/layout.tsx", import.meta.url);
+const cssPath = new URL("../app/globals.css", import.meta.url);
+
+test("the first viewport states May's freelancer offer and contact path", async () => {
+  const page = await readFile(pagePath, "utf8");
+  assert.match(page, />Yumei</);
+  assert.match(page, /AI人文时代，不变的是继续用故事创造价值/);
+  assert.match(page, /人物与深度特稿/);
+  assert.match(page, /商业品牌内容/);
+  assert.match(page, /城市文化与旅行写作/);
+  assert.match(page, /AI 内容研究与评测/);
+  assert.match(page, /跨文化表达与文书/);
+  assert.match(page, /产业与科技观察/);
+  assert.match(page, /用故事创造价值/);
+  assert.match(page, /为品牌、媒体与跨文化项目提供中英双语采访、内容写作与深度编辑/);
+  assert.match(page, /mailto:yumeifu0420@gmail\.com/);
+  assert.doesNotMatch(page, /Your site is taking shape/);
+});
+
+test("portfolio evidence is linked and roles stay explicit", async () => {
+  const page = await readFile(pagePath, "utf8");
+  assert.match(page, /实测 4 款国产头部 AI 视频大模型/);
+  assert.match(page, /被“冻”住的六年/);
+  assert.match(page, /2505-pessoa\.pdf/);
+  assert.match(page, /2607-rotterdam\.pdf/);
+  assert.match(page, /作者/);
+  assert.match(page, /联合署名/);
+  assert.match(page, /项目经历/);
+  assert.match(page, /rel="noreferrer"/);
+});
+
+test("public portfolio assets exist", async () => {
+  const assets = [
+    "../public/fonts/MaShanZheng-Regular.ttf",
+    "../public/assets/may-editorial-hero.png",
+    "../public/assets/may-portrait.jpg",
+    "../public/works/2505-pessoa.pdf",
+    "../public/works/2507-ceramic-staircase.pdf",
+    "../public/works/2607-rotterdam.pdf",
+  ];
+
+  await Promise.all(
+    assets.map((path) => access(new URL(path, import.meta.url), constants.R_OK)),
+  );
+});
+
+test("document metadata and responsive motion preferences are configured", async () => {
+  const [layout, css] = await Promise.all([
+    readFile(layoutPath, "utf8"),
+    readFile(cssPath, "utf8"),
+  ]);
+  assert.match(layout, /lang="zh-CN"/);
+  assert.match(layout, /付玉梅/);
+  assert.match(css, /prefers-reduced-motion: reduce/);
+  assert.match(css, /max-width: 767px/);
+  assert.doesNotMatch(css, /transition:\s*all/);
+  assert.doesNotMatch(css, /font-style:\s*italic/);
+});
+
+test("hero copy keeps a protected text column beside the illustration", async () => {
+  const css = await readFile(cssPath, "utf8");
+  assert.match(css, /--hero-copy-width:\s*520px/);
+  assert.match(css, /@font-face\s*\{[^}]*font-family:\s*"Ma Shan Zheng"[^}]*MaShanZheng-Regular\.ttf/s);
+  assert.match(css, /--hand:\s*"Ma Shan Zheng"/);
+  assert.match(css, /\.hero h1\s*\{[^}]*font-family:\s*var\(--hero-title-font,\s*var\(--hand\)\)[^}]*font-size:\s*var\(--hero-title-size/s);
+  assert.match(css, /\.hero-intro\s*\{[^}]*max-width:\s*var\(--hero-copy-width\)/s);
+  assert.match(css, /\.hero-art\s*\{[^}]*bottom:\s*var\(--hero-art-bottom,\s*6%\)[^}]*width:\s*var\(--hero-art-width,\s*96%\)/s);
+});
+
+test("a local hero editor exposes typography and illustration controls", async () => {
+  const editor = await readFile(new URL("../app/HeroEditor.tsx", import.meta.url), "utf8");
+  const page = await readFile(pagePath, "utf8");
+  assert.match(page, /<HeroEditor/);
+  assert.match(editor, /调整首页/);
+  assert.match(editor, /标题字体/);
+  assert.match(editor, /标题大小/);
+  assert.match(editor, /插画大小/);
+  assert.match(editor, /插画位置/);
+  assert.match(editor, /localStorage/);
+  assert.match(editor, /恢复默认/);
+});
