@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 type Settings = { font: string; titleSize: number; artSize: number; artPosition: number };
 const storageKey = "yumei-hero-settings-v2";
-const defaults: Settings = { font: '"Songti SC", STSong, serif', titleSize: 67, artSize: 100, artPosition: 0 };
+const defaults: Settings = { font: '"Songti SC", STSong, serif', titleSize: 52, artSize: 88, artPosition: 1 };
 const fonts = [
   ["柔和宋体", '"Songti SC", STSong, serif'],
   ["清晰黑体", '"PingFang SC", sans-serif'],
@@ -29,9 +29,11 @@ export function HeroEditor() {
     if (!saved) return;
     try {
       const parsed = { ...defaults, ...JSON.parse(saved) } as Settings;
+      const wasPreviousDefault = parsed.titleSize === 67 && parsed.artSize === 100 && parsed.artPosition === 0;
+      const restored = wasPreviousDefault ? defaults : parsed;
       const timer = window.setTimeout(() => {
-        setSettings(parsed);
-        applySettings(parsed);
+        setSettings(restored);
+        applySettings(restored);
       }, 0);
       return () => window.clearTimeout(timer);
     } catch { localStorage.removeItem(storageKey); }

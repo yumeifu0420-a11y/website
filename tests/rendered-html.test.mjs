@@ -69,9 +69,9 @@ test("hero copy keeps a protected text column beside the illustration", async ()
   assert.match(css, /--hero-copy-width:\s*520px/);
   assert.match(css, /--hand:\s*"Songti SC"/);
   assert.doesNotMatch(css, /Ma Shan Zheng/);
-  assert.match(css, /\.hero h1\s*\{[^}]*font-family:\s*var\(--hero-title-font,\s*var\(--hand\)\)[^}]*font-size:\s*var\(--hero-title-size/s);
-  assert.match(css, /\.hero-intro\s*\{[^}]*max-width:\s*580px[^}]*background:\s*rgba\(184,211,221,\.32\)/s);
-  assert.match(css, /\.hero-art\s*\{[^}]*bottom:\s*var\(--hero-art-bottom,\s*0%\)[^}]*width:\s*var\(--hero-art-width,\s*100%\)/s);
+  assert.match(css, /\.hero h1\s*\{[^}]*font-family:\s*var\(--hero-title-font,\s*var\(--hand\)\)[^}]*font-size:\s*min\(var\(--hero-title-size,52px\),11vw\)/s);
+  assert.match(css, /\.hero-intro\s*\{[^}]*max-width:\s*510px[^}]*background:\s*rgba\(184,211,221,\.34\)/s);
+  assert.match(css, /\.hero-art\s*\{[^}]*right:\s*-3%[^}]*bottom:\s*var\(--hero-art-bottom,\s*1%\)[^}]*width:\s*var\(--hero-art-width,\s*88%\)/s);
 });
 
 test("a local hero editor exposes typography and illustration controls", async () => {
@@ -85,5 +85,8 @@ test("a local hero editor exposes typography and illustration controls", async (
   assert.match(editor, /插画位置/);
   assert.match(editor, /localStorage/);
   assert.match(editor, /恢复默认/);
+  assert.match(editor, /titleSize:\s*52/);
+  assert.match(editor, /artSize:\s*88/);
+  assert.match(editor, /wasPreviousDefault/);
   assert.doesNotMatch(editor, /艺术手写/);
 });
