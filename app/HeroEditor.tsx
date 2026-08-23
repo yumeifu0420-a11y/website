@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 
 type Settings = { font: string; titleSize: number; artSize: number; artPosition: number };
-const storageKey = "yumei-hero-settings-v3";
-const legacyStorageKey = "yumei-hero-settings-v2";
-const defaults: Settings = { font: '"汇文明朝体", "Hiragino Mincho ProN", "Songti SC", serif', titleSize: 48, artSize: 82, artPosition: 8 };
+const storageKey = "yumei-hero-settings-v4";
+const legacyStorageKey = "yumei-hero-settings-v3";
+const defaults: Settings = { font: '"汇文明朝体", "Hiragino Mincho ProN", "Songti SC", serif', titleSize: 44, artSize: 82, artPosition: 8 };
 const fonts = [
   ["汇文明朝体（本机）", '"汇文明朝体", "Hiragino Mincho ProN", "Songti SC", serif'],
   ["柔和宋体", '"Songti SC", STSong, serif'],
@@ -32,7 +32,7 @@ export function HeroEditor() {
     if (!saved) return;
     try {
       const parsed = { ...defaults, ...JSON.parse(saved) } as Settings;
-      const wasPreviousDefault = (parsed.titleSize === 67 && parsed.artSize === 100 && parsed.artPosition === 0) || (parsed.titleSize === 52 && parsed.artSize === 88 && parsed.artPosition === 6);
+      const wasPreviousDefault = (parsed.titleSize === 67 && parsed.artSize === 100 && parsed.artPosition === 0) || (parsed.titleSize === 52 && parsed.artSize === 88 && parsed.artPosition === 6) || (parsed.titleSize === 48 && parsed.artSize === 82 && parsed.artPosition === 8);
       const restored = currentSaved ? parsed : { ...(wasPreviousDefault ? defaults : parsed), font: defaults.font };
       const timer = window.setTimeout(() => {
         setSettings(restored);
