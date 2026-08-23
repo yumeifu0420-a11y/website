@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 type Settings = { font: string; titleSize: number; artSize: number; artPosition: number };
-const defaults: Settings = { font: '"Ma Shan Zheng", cursive', titleSize: 67, artSize: 96, artPosition: 6 };
+const defaults: Settings = { font: '"Ma Shan Zheng", cursive', titleSize: 67, artSize: 100, artPosition: 0 };
 const fonts = [
   ["艺术手写", '"Ma Shan Zheng", cursive'],
   ["柔和宋体", '"Songti SC", STSong, serif'],

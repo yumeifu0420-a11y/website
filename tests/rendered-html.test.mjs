@@ -70,7 +70,7 @@ test("hero copy keeps a protected text column beside the illustration", async ()
   assert.match(css, /--hand:\s*"Ma Shan Zheng"/);
   assert.match(css, /\.hero h1\s*\{[^}]*font-family:\s*var\(--hero-title-font,\s*var\(--hand\)\)[^}]*font-size:\s*var\(--hero-title-size/s);
   assert.match(css, /\.hero-intro\s*\{[^}]*max-width:\s*var\(--hero-copy-width\)/s);
-  assert.match(css, /\.hero-art\s*\{[^}]*bottom:\s*var\(--hero-art-bottom,\s*6%\)[^}]*width:\s*var\(--hero-art-width,\s*96%\)/s);
+  assert.match(css, /\.hero-art\s*\{[^}]*bottom:\s*var\(--hero-art-bottom,\s*0%\)[^}]*width:\s*var\(--hero-art-width,\s*100%\)/s);
 });
 
 test("a local hero editor exposes typography and illustration controls", async () => {
