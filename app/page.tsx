@@ -32,12 +32,13 @@ export default function Home() {
           <h1 id="hero-title" aria-label="AI人文时代，不变的是继续用故事创造价值">
             <span>AI人文时代，</span><span>不变的是继续</span><span>用故事创造价值</span>
           </h1>
-          <p className="hero-intro">5年头部媒体记者+3年自由撰稿人经验，以采访、研究与深度编辑能力，为品牌和媒体创作兼具真实感、洞察力与传播力的中英双语内容。</p>
+          <p className="hero-intro">5年头部媒体记者、3年欧洲自由撰稿经历，兼具专业判断与全球视野。以采访、研究和深度编辑为基础，为品牌与媒体创作真实、有洞察、具传播力的中英双语内容。</p>
           <div className="hero-actions">
             <a className="primary-button" href="mailto:yumeifu0420@gmail.com">聊聊项目</a>
             <a className="text-link" href="#portfolio">查看作品集 <span aria-hidden="true">↓</span></a>
           </div>
         </div>
+        <div className="hero-color-marks" aria-hidden="true"><i /><i /><i /></div>
       </section>
 
       <section className="portfolio-intro" id="portfolio">

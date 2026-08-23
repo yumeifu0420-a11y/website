@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@font-face { font-family: "Zhi Mang Xing"; src: url("/fonts/ZhiMangXing-Regular.ttf") format("truetype"); font-display: swap; font-weight: 400; }
+@font-face { font-family: "Long Cang"; src: url("/fonts/LongCang-Regular.ttf") format("truetype"); font-display: swap; font-weight: 400; }
+@font-face { font-family: "Liu Jian Mao Cao"; src: url("/fonts/LiuJianMaoCao-Regular.ttf") format("truetype"); font-display: swap; font-weight: 400; }
+
 :root {
   --paper: #f7f6f1;
   --clean: #fffefa;
@@ -34,13 +38,18 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline
 .mobile-nav { display: none; }
 
 .hero { position: relative; min-height: min(940px, 100dvh); overflow: hidden; isolation: isolate; background-color: #fbf6ea; background-image: radial-gradient(circle at 55% 18%, rgba(255,252,246,.82), transparent 48%), linear-gradient(180deg,#fcf8ef 0%,#fbf6eb 58%,#f3ebdf 100%); }
-.hero-art { position: absolute; right: -3%; bottom: var(--hero-art-bottom, 1%); z-index: -1; width: var(--hero-art-width, 88%); height: auto; object-fit: contain; object-position: right bottom; }
+.hero-art { position: absolute; right: -12%; bottom: var(--hero-art-bottom, 8%); z-index: -1; width: var(--hero-art-width, 82%); height: auto; object-fit: contain; object-position: right bottom; transform: rotate(-1.8deg); transform-origin: right bottom; }
 .hero-copy { --hero-copy-width: 520px; width: min(1240px, calc(100% - 80px)); margin: 0 auto; padding-top: clamp(150px, 18vh, 190px); }
 .hero-name, .section-kicker { margin: 0 0 18px; color: var(--blue); font-family: "Avenir Next", "Helvetica Neue", var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
-.hero h1 { max-width: 9em; margin: 0; font-family: var(--hero-title-font, var(--hand)); font-size: min(var(--hero-title-size,52px),11vw); font-weight: 400; letter-spacing: .045em; line-height: 1.15; text-wrap: balance; }
+.hero h1 { max-width: 9em; margin: 0; font-family: var(--hero-title-font,var(--hand)); font-size: min(var(--hero-title-size,48px),11vw); font-weight: 400; letter-spacing: .045em; line-height: 1.15; text-wrap: balance; }
 .hero h1 span { display: block; white-space: nowrap; }
 .hero-intro { max-width: 510px; margin: 24px 0 0; padding: 15px 18px 16px; border-left: 3px solid rgba(82,127,153,.72); background: rgba(184,211,221,.34); color: #354349; font-size: 15px; line-height: 1.72; text-wrap: pretty; }
 .hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 30px; }
+.hero-color-marks { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.hero-color-marks i { position: absolute; display: block; }
+.hero-color-marks i:nth-child(1) { top: 21%; right: 8%; width: 150px; height: 46px; border-radius: 50%; background: rgba(83,143,177,.16); transform: rotate(-8deg); }
+.hero-color-marks i:nth-child(2) { top: 56%; right: 24%; width: 18px; height: 18px; border-radius: 50%; background: rgba(205,111,87,.62); }
+.hero-color-marks i:nth-child(3) { right: 4%; bottom: 15%; width: 180px; height: 58px; border-top: 2px solid rgba(67,112,88,.58); border-radius: 50%; transform: rotate(5deg); }
 .primary-button { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; padding: 10px 18px; border: 1px solid var(--ink); border-radius: 8px; background: var(--ink); color: var(--clean); font-size: 14px; font-weight: 500; line-height: 1; text-decoration: none; white-space: nowrap; transition: transform 140ms var(--ease-out), background-color 140ms ease; }
 .primary-button:active { transform: scale(.98); }
 .text-link { font-size: 14px; font-weight: 500; text-decoration: underline; }
@@ -140,10 +149,13 @@ footer p { margin: 0; } footer p:nth-child(2) { text-align: center; }
   .mobile-nav nav { position: absolute; top: 52px; right: 0; display: grid; width: 190px; padding: 10px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,254,250,.98); box-shadow: rgba(29,35,39,.04) 0 4px 18px, rgba(29,35,39,.025) 0 2px 8px; }
   .mobile-nav nav a { min-height: 44px; padding: 9px 10px; text-decoration: none; }
   .hero { min-height: 790px; }
-  .hero-art { right: -28%; bottom: var(--hero-art-bottom, 1%); width: var(--hero-art-width-mobile, 151%); max-width: none; height: auto; object-position: right bottom; }
+  .hero-art { right: -36%; bottom: var(--hero-art-bottom, 8%); width: var(--hero-art-width-mobile, 141%); max-width: none; height: auto; object-position: right bottom; transform: rotate(-1.4deg); }
   .hero-copy { width: calc(100% - 40px); padding-top: 124px; }
   .hero h1 { max-width: 8em; line-height: 1.16; }
   .hero-intro { max-width: 330px; margin-top: 20px; padding: 13px 14px 14px; font-size: 14px; }
+  .hero-color-marks i:nth-child(1) { top: 49%; right: -28px; width: 100px; height: 32px; }
+  .hero-color-marks i:nth-child(2) { top: 64%; right: 18%; width: 13px; height: 13px; }
+  .hero-color-marks i:nth-child(3) { display: none; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 16px; margin-top: 22px; }
   .portfolio-intro, .method, .about { padding: 86px 20px; }
   .section-heading { display: block; }

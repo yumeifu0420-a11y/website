@@ -4,8 +4,11 @@ import { useEffect, useState } from "react";
 
 type Settings = { font: string; titleSize: number; artSize: number; artPosition: number };
 const storageKey = "yumei-hero-settings-v2";
-const defaults: Settings = { font: '"Songti SC", STSong, serif', titleSize: 52, artSize: 88, artPosition: 1 };
+const defaults: Settings = { font: '"Zhi Mang Xing", "Songti SC", serif', titleSize: 48, artSize: 82, artPosition: 8 };
 const fonts = [
+  ["志莽行书", '"Zhi Mang Xing", "Songti SC", serif'],
+  ["龙藏手书", '"Long Cang", "Songti SC", serif'],
+  ["刘建毛草", '"Liu Jian Mao Cao", "Songti SC", serif'],
   ["柔和宋体", '"Songti SC", STSong, serif'],
   ["清晰黑体", '"PingFang SC", sans-serif'],
   ["书页衬线", '"Iowan Old Style", "Songti SC", serif'],
@@ -29,7 +32,7 @@ export function HeroEditor() {
     if (!saved) return;
     try {
       const parsed = { ...defaults, ...JSON.parse(saved) } as Settings;
-      const wasPreviousDefault = parsed.titleSize === 67 && parsed.artSize === 100 && parsed.artPosition === 0;
+      const wasPreviousDefault = (parsed.titleSize === 67 && parsed.artSize === 100 && parsed.artPosition === 0) || (parsed.titleSize === 52 && parsed.artSize === 88 && parsed.artPosition === 6);
       const restored = wasPreviousDefault ? defaults : parsed;
       const timer = window.setTimeout(() => {
         setSettings(restored);

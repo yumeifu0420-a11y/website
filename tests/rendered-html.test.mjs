@@ -18,8 +18,8 @@ test("the first viewport states May's freelancer offer and contact path", async 
   assert.match(page, /跨文化表达与文书/);
   assert.match(page, /产业与科技观察/);
   assert.match(page, /用故事创造价值/);
-  assert.match(page, /5年头部媒体记者\+3年自由撰稿人经验/);
-  assert.match(page, /兼具真实感、洞察力与传播力的中英双语内容/);
+  assert.match(page, /5年头部媒体记者、3年欧洲自由撰稿经历/);
+  assert.match(page, /创作真实、有洞察、具传播力的中英双语内容/);
   assert.match(page, /mailto:yumeifu0420@gmail\.com/);
   assert.doesNotMatch(page, /Your site is taking shape/);
 });
@@ -38,6 +38,9 @@ test("portfolio evidence is linked and roles stay explicit", async () => {
 
 test("public portfolio assets exist", async () => {
   const assets = [
+    "../public/fonts/ZhiMangXing-Regular.ttf",
+    "../public/fonts/LongCang-Regular.ttf",
+    "../public/fonts/LiuJianMaoCao-Regular.ttf",
     "../public/fonts/MaShanZheng-Regular.ttf",
     "../public/assets/may-editorial-hero.png",
     "../public/assets/may-portrait.jpg",
@@ -69,9 +72,9 @@ test("hero copy keeps a protected text column beside the illustration", async ()
   assert.match(css, /--hero-copy-width:\s*520px/);
   assert.match(css, /--hand:\s*"Songti SC"/);
   assert.doesNotMatch(css, /Ma Shan Zheng/);
-  assert.match(css, /\.hero h1\s*\{[^}]*font-family:\s*var\(--hero-title-font,\s*var\(--hand\)\)[^}]*font-size:\s*min\(var\(--hero-title-size,52px\),11vw\)/s);
+  assert.match(css, /\.hero h1\s*\{[^}]*font-family:\s*var\(--hero-title-font,var\(--hand\)\)[^}]*font-size:\s*min\(var\(--hero-title-size,48px\),11vw\)/s);
   assert.match(css, /\.hero-intro\s*\{[^}]*max-width:\s*510px[^}]*background:\s*rgba\(184,211,221,\.34\)/s);
-  assert.match(css, /\.hero-art\s*\{[^}]*right:\s*-3%[^}]*bottom:\s*var\(--hero-art-bottom,\s*1%\)[^}]*width:\s*var\(--hero-art-width,\s*88%\)/s);
+  assert.match(css, /\.hero-art\s*\{[^}]*right:\s*-12%[^}]*bottom:\s*var\(--hero-art-bottom,\s*8%\)[^}]*width:\s*var\(--hero-art-width,\s*82%\)[^}]*rotate\(-1\.8deg\)/s);
 });
 
 test("a local hero editor exposes typography and illustration controls", async () => {
@@ -80,13 +83,16 @@ test("a local hero editor exposes typography and illustration controls", async (
   assert.match(page, /<HeroEditor/);
   assert.match(editor, /调整首页/);
   assert.match(editor, /标题字体/);
+  assert.match(editor, /志莽行书/);
+  assert.match(editor, /龙藏手书/);
+  assert.match(editor, /刘建毛草/);
   assert.match(editor, /标题大小/);
   assert.match(editor, /插画大小/);
   assert.match(editor, /插画位置/);
   assert.match(editor, /localStorage/);
   assert.match(editor, /恢复默认/);
-  assert.match(editor, /titleSize:\s*52/);
-  assert.match(editor, /artSize:\s*88/);
+  assert.match(editor, /titleSize:\s*48/);
+  assert.match(editor, /artSize:\s*82/);
   assert.match(editor, /wasPreviousDefault/);
   assert.doesNotMatch(editor, /艺术手写/);
 });
