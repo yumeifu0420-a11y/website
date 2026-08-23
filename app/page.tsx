@@ -27,6 +27,7 @@ export default function Home() {
 
       <section className="hero" id="top" aria-labelledby="hero-title">
         <Image className="hero-art" src="/assets/may-editorial-hero.png" alt="一位戴贝雷帽与眼镜的女性坐在由文字汇成的长路尽头" width={1536} height={1024} priority />
+        <Image className="hero-jellyfish" src="/assets/jellyfish-drift.png" alt="" width={1024} height={1536} aria-hidden="true" />
         <div className="hero-copy">
           <p className="hero-name">Yumei</p>
           <h1 id="hero-title" aria-label="AI人文时代，不变的是继续用故事创造价值">

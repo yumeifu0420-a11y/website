@@ -39,7 +39,8 @@ test("portfolio evidence is linked and roles stay explicit", async () => {
 test("public portfolio assets exist", async () => {
   const assets = [
     "../public/assets/may-editorial-hero.png",
-    "../public/assets/aged-blue-river-stroke.png",
+    "../public/assets/aged-paper-strip.png",
+    "../public/assets/jellyfish-drift.png",
     "../public/assets/may-portrait.jpg",
     "../public/works/2505-pessoa.pdf",
     "../public/works/2507-ceramic-staircase.pdf",
@@ -70,7 +71,8 @@ test("hero copy keeps a protected text column beside the illustration", async ()
   assert.match(css, /--hand:\s*"Songti SC"/);
   assert.doesNotMatch(css, /Ma Shan Zheng/);
   assert.match(css, /\.hero h1\s*\{[^}]*font-family:\s*var\(--hero-title-font,var\(--hand\)\)[^}]*font-size:\s*min\(var\(--hero-title-size,48px\),11vw\)/s);
-  assert.match(css, /\.hero-intro\s*\{[^}]*aged-blue-river-stroke\.png/s);
+  assert.match(css, /\.hero-intro::before\s*\{[^}]*aged-paper-strip\.png[^}]*mask-image:\s*linear-gradient/s);
+  assert.match(css, /\.hero-jellyfish\s*\{/);
   assert.match(css, /\.hero-art\s*\{[^}]*right:\s*-12%[^}]*bottom:\s*var\(--hero-art-bottom,\s*8%\)[^}]*width:\s*var\(--hero-art-width,\s*82%\)[^}]*rotate\(-1\.8deg\)/s);
 });
 
