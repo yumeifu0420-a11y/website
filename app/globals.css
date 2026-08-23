@@ -39,7 +39,7 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline
 .hero-name, .section-kicker { margin: 0 0 18px; color: var(--blue); font-family: "Avenir Next", "Helvetica Neue", var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
 .hero h1 { max-width: 13em; margin: 0; font-family: var(--hero-title-font,var(--hand)); font-size: min(var(--hero-title-size,48px),11vw); font-weight: 400; letter-spacing: .035em; line-height: 1.22; text-wrap: balance; }
 .hero h1 span { display: block; white-space: nowrap; }
-.hero-intro { max-width: 540px; margin: 24px 0 0; padding: 28px 30px 30px; background: url("/assets/aged-paper-strip.png") center / 100% 100% no-repeat; color: #354349; filter: drop-shadow(0 7px 12px rgba(50,63,66,.09)); font-size: 15px; line-height: 1.72; text-wrap: pretty; }
+.hero-intro { max-width: 540px; margin: 22px 0 0; padding: 31px 32px 33px; background: url("/assets/aged-blue-river-stroke.png") center / 100% 100% no-repeat; color: #26363c; font-size: 15px; line-height: 1.72; text-wrap: pretty; }
 .hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 30px; }
 .hero-color-marks { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 .hero-color-marks i { position: absolute; display: block; }
@@ -148,7 +148,7 @@ footer p { margin: 0; } footer p:nth-child(2) { text-align: center; }
   .hero-art { right: -36%; bottom: var(--hero-art-bottom, 8%); width: var(--hero-art-width-mobile, 141%); max-width: none; height: auto; object-position: right bottom; transform: rotate(-1.4deg); }
   .hero-copy { width: calc(100% - 40px); padding-top: 124px; }
   .hero h1 { max-width: 100%; line-height: 1.18; }
-  .hero-intro { max-width: 330px; margin-top: 20px; padding: 13px 14px 14px; font-size: 14px; }
+  .hero-intro { max-width: 340px; margin-top: 18px; padding: 22px 20px 24px; font-size: 14px; }
   .hero-color-marks i:nth-child(1) { top: 49%; right: -28px; width: 100px; height: 32px; }
   .hero-color-marks i:nth-child(2) { top: 64%; right: 18%; width: 13px; height: 13px; }
   .hero-color-marks i:nth-child(3) { display: none; }
