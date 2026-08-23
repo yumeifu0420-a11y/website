@@ -18,7 +18,9 @@ test("the first viewport states May's freelancer offer and contact path", async 
   assert.match(page, /跨文化表达与文书/);
   assert.match(page, /产业与科技观察/);
   assert.match(page, /用故事创造价值/);
-  assert.match(page, /为品牌、媒体与跨文化项目提供中英双语采访、内容写作与深度编辑/);
+  assert.match(page, /记者、编辑与数字人文研究者/);
+  assert.match(page, /曾任中新经纬、《环球人物》记者/);
+  assert.match(page, /现居欧洲，写作人物、城市、品牌与技术/);
   assert.match(page, /mailto:yumeifu0420@gmail\.com/);
   assert.doesNotMatch(page, /Your site is taking shape/);
 });
