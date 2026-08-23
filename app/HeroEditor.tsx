@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 
 type Settings = { font: string; titleSize: number; artSize: number; artPosition: number };
-const defaults: Settings = { font: '"Ma Shan Zheng", cursive', titleSize: 67, artSize: 100, artPosition: 0 };
+const storageKey = "yumei-hero-settings-v2";
+const defaults: Settings = { font: '"Songti SC", STSong, serif', titleSize: 67, artSize: 100, artPosition: 0 };
 const fonts = [
-  ["艺术手写", '"Ma Shan Zheng", cursive'],
   ["柔和宋体", '"Songti SC", STSong, serif'],
   ["清晰黑体", '"PingFang SC", sans-serif'],
   ["书页衬线", '"Iowan Old Style", "Songti SC", serif'],
@@ -25,7 +25,7 @@ export function HeroEditor() {
   const [settings, setSettings] = useState<Settings>(defaults);
 
   useEffect(() => {
-    const saved = localStorage.getItem("yumei-hero-settings");
+    const saved = localStorage.getItem(storageKey);
     if (!saved) return;
     try {
       const parsed = { ...defaults, ...JSON.parse(saved) } as Settings;
@@ -34,20 +34,20 @@ export function HeroEditor() {
         applySettings(parsed);
       }, 0);
       return () => window.clearTimeout(timer);
-    } catch { localStorage.removeItem("yumei-hero-settings"); }
+    } catch { localStorage.removeItem(storageKey); }
   }, []);
 
   function update(next: Partial<Settings>) {
     const updated = { ...settings, ...next };
     setSettings(updated);
     applySettings(updated);
-    localStorage.setItem("yumei-hero-settings", JSON.stringify(updated));
+    localStorage.setItem(storageKey, JSON.stringify(updated));
   }
 
   function reset() {
     setSettings(defaults);
     applySettings(defaults);
-    localStorage.removeItem("yumei-hero-settings");
+    localStorage.removeItem(storageKey);
   }
 
   return (

@@ -18,9 +18,8 @@ test("the first viewport states May's freelancer offer and contact path", async 
   assert.match(page, /跨文化表达与文书/);
   assert.match(page, /产业与科技观察/);
   assert.match(page, /用故事创造价值/);
-  assert.match(page, /记者、编辑与数字人文研究者/);
-  assert.match(page, /曾任中新经纬、《环球人物》记者/);
-  assert.match(page, /现居欧洲，写作人物、城市、品牌与技术/);
+  assert.match(page, /5年头部媒体记者\+3年自由撰稿人经验/);
+  assert.match(page, /兼具真实感、洞察力与传播力的中英双语内容/);
   assert.match(page, /mailto:yumeifu0420@gmail\.com/);
   assert.doesNotMatch(page, /Your site is taking shape/);
 });
@@ -68,10 +67,10 @@ test("document metadata and responsive motion preferences are configured", async
 test("hero copy keeps a protected text column beside the illustration", async () => {
   const css = await readFile(cssPath, "utf8");
   assert.match(css, /--hero-copy-width:\s*520px/);
-  assert.match(css, /@font-face\s*\{[^}]*font-family:\s*"Ma Shan Zheng"[^}]*MaShanZheng-Regular\.ttf/s);
-  assert.match(css, /--hand:\s*"Ma Shan Zheng"/);
+  assert.match(css, /--hand:\s*"Songti SC"/);
+  assert.doesNotMatch(css, /Ma Shan Zheng/);
   assert.match(css, /\.hero h1\s*\{[^}]*font-family:\s*var\(--hero-title-font,\s*var\(--hand\)\)[^}]*font-size:\s*var\(--hero-title-size/s);
-  assert.match(css, /\.hero-intro\s*\{[^}]*max-width:\s*var\(--hero-copy-width\)/s);
+  assert.match(css, /\.hero-intro\s*\{[^}]*max-width:\s*580px[^}]*background:\s*rgba\(184,211,221,\.32\)/s);
   assert.match(css, /\.hero-art\s*\{[^}]*bottom:\s*var\(--hero-art-bottom,\s*0%\)[^}]*width:\s*var\(--hero-art-width,\s*100%\)/s);
 });
 
@@ -86,4 +85,5 @@ test("a local hero editor exposes typography and illustration controls", async (
   assert.match(editor, /插画位置/);
   assert.match(editor, /localStorage/);
   assert.match(editor, /恢复默认/);
+  assert.doesNotMatch(editor, /艺术手写/);
 });

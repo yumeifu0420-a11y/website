@@ -1,13 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Ma Shan Zheng";
-  src: url("/fonts/MaShanZheng-Regular.ttf") format("truetype");
-  font-display: swap;
-  font-style: normal;
-  font-weight: 400;
-}
-
 :root {
   --paper: #f7f6f1;
   --clean: #fffefa;
@@ -18,7 +10,7 @@
   --blue-pale: #dcebf0;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --serif: "Iowan Old Style", Baskerville, "Songti SC", STSong, Georgia, serif;
-  --hand: "Ma Shan Zheng", "HanziPen SC", "Kaiti SC", STKaiti, sans-serif;
+  --hand: "Songti SC", STSong, Georgia, serif;
   --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
 }
 
@@ -47,14 +39,8 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline
 .hero-name, .section-kicker { margin: 0 0 18px; color: var(--blue); font-family: "Avenir Next", "Helvetica Neue", var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
 .hero h1 { max-width: 9em; margin: 0; font-family: var(--hero-title-font, var(--hand)); font-size: var(--hero-title-size, clamp(2.6rem, 4.4vw, 4.2rem)); font-weight: 400; letter-spacing: .055em; line-height: 1.2; text-wrap: balance; }
 .hero h1 span { display: block; white-space: nowrap; }
-.hero-intro { max-width: var(--hero-copy-width); margin: 30px 0 0; color: #434b4f; font-size: clamp(16px, 1.4vw, 19px); line-height: 1.8; text-wrap: pretty; }
+.hero-intro { max-width: 580px; margin: 28px 0 0; padding: 17px 20px 18px; border-left: 3px solid rgba(82,127,153,.72); background: rgba(184,211,221,.32); color: #354349; font-size: clamp(15px,1.2vw,17px); line-height: 1.75; text-wrap: pretty; }
 .hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 30px; }
-.hero-marginalia { position: absolute; top: 168px; right: max(40px,calc((100vw - 1240px)/2)); width: 250px; padding: 16px 0 18px; border-top: 1px solid rgba(82,127,153,.62); color: #416d84; }
-.hero-marginalia::before { position: absolute; top: -5px; left: 42%; width: 10px; height: 10px; border: 1px solid #527f99; border-radius: 50%; background: #faf7ef; content: ""; }
-.hero-marginalia span, .hero-marginalia small { font-size: 10px; font-weight: 600; letter-spacing: .14em; }
-.hero-marginalia p { margin: 18px 0 14px; font-family: var(--serif); font-size: 17px; letter-spacing: .08em; }
-.hero-marginalia small { color: rgba(65,109,132,.78); }
-.hero-marginalia i { position: absolute; right: 0; bottom: -12px; display: block; width: 170px; height: 25px; border-top: 1px solid rgba(82,127,153,.62); border-radius: 50%; transform: rotate(-4deg); }
 .primary-button { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; padding: 10px 18px; border: 1px solid var(--ink); border-radius: 8px; background: var(--ink); color: var(--clean); font-size: 14px; font-weight: 500; line-height: 1; text-decoration: none; white-space: nowrap; transition: transform 140ms var(--ease-out), background-color 140ms ease; }
 .primary-button:active { transform: scale(.98); }
 .text-link { font-size: 14px; font-weight: 500; text-decoration: underline; }
@@ -159,7 +145,6 @@ footer p { margin: 0; } footer p:nth-child(2) { text-align: center; }
   .hero h1 { max-width: 8em; font-size: clamp(2.45rem,11vw,3.4rem); line-height: 1.16; }
   .hero-intro { max-width: 26em; margin-top: 22px; font-size: 15px; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 16px; margin-top: 22px; }
-  .hero-marginalia { display: none; }
   .portfolio-intro, .method, .about { padding: 86px 20px; }
   .section-heading { display: block; }
   .section-heading .section-kicker { margin-bottom: 18px; }
