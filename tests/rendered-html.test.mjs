@@ -38,10 +38,6 @@ test("portfolio evidence is linked and roles stay explicit", async () => {
 
 test("public portfolio assets exist", async () => {
   const assets = [
-    "../public/fonts/ZhiMangXing-Regular.ttf",
-    "../public/fonts/LongCang-Regular.ttf",
-    "../public/fonts/LiuJianMaoCao-Regular.ttf",
-    "../public/fonts/MaShanZheng-Regular.ttf",
     "../public/assets/may-editorial-hero.png",
     "../public/assets/may-portrait.jpg",
     "../public/works/2505-pessoa.pdf",
@@ -73,7 +69,7 @@ test("hero copy keeps a protected text column beside the illustration", async ()
   assert.match(css, /--hand:\s*"Songti SC"/);
   assert.doesNotMatch(css, /Ma Shan Zheng/);
   assert.match(css, /\.hero h1\s*\{[^}]*font-family:\s*var\(--hero-title-font,var\(--hand\)\)[^}]*font-size:\s*min\(var\(--hero-title-size,48px\),11vw\)/s);
-  assert.match(css, /\.hero-intro\s*\{[^}]*max-width:\s*510px[^}]*background:\s*rgba\(184,211,221,\.34\)/s);
+  assert.match(css, /\.hero-intro\s*\{[^}]*max-width:\s*540px[^}]*clip-path:\s*polygon/s);
   assert.match(css, /\.hero-art\s*\{[^}]*right:\s*-12%[^}]*bottom:\s*var\(--hero-art-bottom,\s*8%\)[^}]*width:\s*var\(--hero-art-width,\s*82%\)[^}]*rotate\(-1\.8deg\)/s);
 });
 
@@ -83,9 +79,7 @@ test("a local hero editor exposes typography and illustration controls", async (
   assert.match(page, /<HeroEditor/);
   assert.match(editor, /调整首页/);
   assert.match(editor, /标题字体/);
-  assert.match(editor, /志莽行书/);
-  assert.match(editor, /龙藏手书/);
-  assert.match(editor, /刘建毛草/);
+  assert.match(editor, /汇文明朝体（本机）/);
   assert.match(editor, /标题大小/);
   assert.match(editor, /插画大小/);
   assert.match(editor, /插画位置/);
@@ -94,5 +88,5 @@ test("a local hero editor exposes typography and illustration controls", async (
   assert.match(editor, /titleSize:\s*48/);
   assert.match(editor, /artSize:\s*82/);
   assert.match(editor, /wasPreviousDefault/);
-  assert.doesNotMatch(editor, /艺术手写/);
+  assert.doesNotMatch(editor, /志莽行书|龙藏手书|刘建毛草|艺术手写/);
 });

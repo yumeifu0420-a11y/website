@@ -30,7 +30,7 @@ export default function Home() {
         <div className="hero-copy">
           <p className="hero-name">Yumei</p>
           <h1 id="hero-title" aria-label="AI人文时代，不变的是继续用故事创造价值">
-            <span>AI人文时代，</span><span>不变的是继续</span><span>用故事创造价值</span>
+            <span>AI人文时代，不变的是</span><span>继续用故事创造价值。</span>
           </h1>
           <p className="hero-intro">5年头部媒体记者、3年欧洲自由撰稿经历，兼具专业判断与全球视野。以采访、研究和深度编辑为基础，为品牌与媒体创作真实、有洞察、具传播力的中英双语内容。</p>
           <div className="hero-actions">

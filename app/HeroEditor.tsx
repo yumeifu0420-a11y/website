@@ -3,12 +3,11 @@
 import { useEffect, useState } from "react";
 
 type Settings = { font: string; titleSize: number; artSize: number; artPosition: number };
-const storageKey = "yumei-hero-settings-v2";
-const defaults: Settings = { font: '"Zhi Mang Xing", "Songti SC", serif', titleSize: 48, artSize: 82, artPosition: 8 };
+const storageKey = "yumei-hero-settings-v3";
+const legacyStorageKey = "yumei-hero-settings-v2";
+const defaults: Settings = { font: '"汇文明朝体", "Hiragino Mincho ProN", "Songti SC", serif', titleSize: 48, artSize: 82, artPosition: 8 };
 const fonts = [
-  ["志莽行书", '"Zhi Mang Xing", "Songti SC", serif'],
-  ["龙藏手书", '"Long Cang", "Songti SC", serif'],
-  ["刘建毛草", '"Liu Jian Mao Cao", "Songti SC", serif'],
+  ["汇文明朝体（本机）", '"汇文明朝体", "Hiragino Mincho ProN", "Songti SC", serif'],
   ["柔和宋体", '"Songti SC", STSong, serif'],
   ["清晰黑体", '"PingFang SC", sans-serif'],
   ["书页衬线", '"Iowan Old Style", "Songti SC", serif'],
@@ -28,12 +27,13 @@ export function HeroEditor() {
   const [settings, setSettings] = useState<Settings>(defaults);
 
   useEffect(() => {
-    const saved = localStorage.getItem(storageKey);
+    const currentSaved = localStorage.getItem(storageKey);
+    const saved = currentSaved ?? localStorage.getItem(legacyStorageKey);
     if (!saved) return;
     try {
       const parsed = { ...defaults, ...JSON.parse(saved) } as Settings;
       const wasPreviousDefault = (parsed.titleSize === 67 && parsed.artSize === 100 && parsed.artPosition === 0) || (parsed.titleSize === 52 && parsed.artSize === 88 && parsed.artPosition === 6);
-      const restored = wasPreviousDefault ? defaults : parsed;
+      const restored = currentSaved ? parsed : { ...(wasPreviousDefault ? defaults : parsed), font: defaults.font };
       const timer = window.setTimeout(() => {
         setSettings(restored);
         applySettings(restored);
