@@ -10,7 +10,7 @@
   --blue-pale: #dcebf0;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --serif: "Iowan Old Style", Baskerville, "Songti SC", STSong, Georgia, serif;
-  --hand: "Songti SC", STSong, Georgia, serif;
+  --hand: "汇文明朝体", "Hiragino Mincho ProN", "Songti SC", STSong, serif;
   --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
 }
 
@@ -39,7 +39,7 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline
 @keyframes jellyfish-drift { 0% { opacity: .38; transform: translate3d(-4px,7px,0) rotate(2.5deg) scale(.98); } 52% { opacity: .48; transform: translate3d(3px,-5px,0) rotate(4.5deg) scale(1.01); } 100% { opacity: .42; transform: translate3d(8px,-11px,0) rotate(6deg) scale(1.025); } }
 .hero-copy { --hero-copy-width: 520px; width: min(1240px, calc(100% - 80px)); margin: 0 auto; padding-top: clamp(150px, 18vh, 190px); }
 .hero-name, .section-kicker { margin: 0 0 18px; color: var(--blue); font-family: "Avenir Next", "Helvetica Neue", var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
-.hero h1 { max-width: 13em; margin: 0; font-family: var(--hero-title-font,var(--hand)); font-size: min(var(--hero-title-size,44px),11vw); font-weight: 400; letter-spacing: .035em; line-height: 1.2; text-wrap: balance; }
+.hero h1 { max-width: 13em; margin: 0; font-family: var(--hero-title-font,var(--hand)); font-size: min(var(--hero-title-size,40px),11vw); font-weight: 400; letter-spacing: .035em; line-height: 1.2; text-wrap: balance; }
 .hero h1 span { display: block; white-space: nowrap; }
 .hero-intro { position: relative; z-index: 0; max-width: 540px; margin: 25px 0 0; padding: 27px 26px 29px 18px; color: #354349; font-size: 15px; line-height: 1.72; text-wrap: pretty; }
 .hero-intro::before { position: absolute; inset: -13px -84px -6px -58px; z-index: -1; background: url("/assets/aged-paper-strip.png") center / 100% 100% no-repeat; content: ""; filter: sepia(.28) saturate(.82) brightness(.88) drop-shadow(0 6px 10px rgba(50,63,66,.07)); mask-image: linear-gradient(90deg,transparent 0%,rgba(0,0,0,.3) 6%,#000 17%,#000 88%,rgba(0,0,0,.28) 96%,transparent 100%); transform: rotate(.22deg); }

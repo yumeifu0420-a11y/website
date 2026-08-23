@@ -68,9 +68,9 @@ test("document metadata and responsive motion preferences are configured", async
 test("hero copy keeps a protected text column beside the illustration", async () => {
   const css = await readFile(cssPath, "utf8");
   assert.match(css, /--hero-copy-width:\s*520px/);
-  assert.match(css, /--hand:\s*"Songti SC"/);
+  assert.match(css, /--hand:\s*"汇文明朝体"/);
   assert.doesNotMatch(css, /Ma Shan Zheng/);
-  assert.match(css, /\.hero h1\s*\{[^}]*font-family:\s*var\(--hero-title-font,var\(--hand\)\)[^}]*font-size:\s*min\(var\(--hero-title-size,44px\),11vw\)/s);
+  assert.match(css, /\.hero h1\s*\{[^}]*font-family:\s*var\(--hero-title-font,var\(--hand\)\)[^}]*font-size:\s*min\(var\(--hero-title-size,40px\),11vw\)/s);
   assert.match(css, /\.hero-intro::before\s*\{[^}]*aged-paper-strip\.png[^}]*mask-image:\s*linear-gradient/s);
   assert.match(css, /\.hero-jellyfish\s*\{/);
   assert.match(css, /\.hero-jellyfish\s*\{[^}]*right:\s*37%[^}]*clip-path:/s);
@@ -93,12 +93,10 @@ test("a local hero editor exposes typography and illustration controls", async (
   assert.match(editor, /插画位置/);
   assert.match(editor, /localStorage/);
   assert.match(editor, /恢复默认/);
-  assert.match(editor, /titleSize:\s*44/);
-  assert.match(editor, /yumei-hero-settings-v5/);
-  assert.match(editor, /legacyStorageKey\s*=\s*"yumei-hero-settings-v4"/);
-  assert.match(editor, /originalFontStorageKey\s*=\s*"yumei-hero-settings-v3"/);
-  assert.doesNotMatch(editor, /font:\s*defaults\.font/);
+  assert.match(editor, /titleSize:\s*40/);
+  assert.match(editor, /yumei-hero-settings-v6/);
+  assert.match(editor, /legacyStorageKey\s*=\s*"yumei-hero-settings-v5"/);
+  assert.match(editor, /font:\s*defaults\.font,\s*titleSize:\s*defaults\.titleSize/);
   assert.match(editor, /artSize:\s*82/);
-  assert.match(editor, /wasPreviousDefault/);
   assert.doesNotMatch(editor, /志莽行书|龙藏手书|刘建毛草|艺术手写/);
 });

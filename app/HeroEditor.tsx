@@ -3,10 +3,9 @@
 import { useEffect, useState } from "react";
 
 type Settings = { font: string; titleSize: number; artSize: number; artPosition: number };
-const storageKey = "yumei-hero-settings-v5";
-const legacyStorageKey = "yumei-hero-settings-v4";
-const originalFontStorageKey = "yumei-hero-settings-v3";
-const defaults: Settings = { font: '"汇文明朝体", "Hiragino Mincho ProN", "Songti SC", serif', titleSize: 44, artSize: 82, artPosition: 8 };
+const storageKey = "yumei-hero-settings-v6";
+const legacyStorageKey = "yumei-hero-settings-v5";
+const defaults: Settings = { font: '"汇文明朝体", "Hiragino Mincho ProN", "Songti SC", serif', titleSize: 40, artSize: 82, artPosition: 8 };
 const fonts = [
   ["汇文明朝体（本机）", '"汇文明朝体", "Hiragino Mincho ProN", "Songti SC", serif'],
   ["柔和宋体", '"Songti SC", STSong, serif'],
@@ -30,14 +29,11 @@ export function HeroEditor() {
   useEffect(() => {
     const currentSaved = localStorage.getItem(storageKey);
     const previousSaved = localStorage.getItem(legacyStorageKey);
-    const originalSaved = localStorage.getItem(originalFontStorageKey);
-    const saved = currentSaved ?? previousSaved ?? originalSaved;
+    const saved = currentSaved ?? previousSaved;
     if (!saved) return;
     try {
       const parsed = { ...defaults, ...JSON.parse(saved) } as Settings;
-      const originalFont = originalSaved ? (JSON.parse(originalSaved) as Partial<Settings>).font : undefined;
-      const wasPreviousDefault = (parsed.titleSize === 67 && parsed.artSize === 100 && parsed.artPosition === 0) || (parsed.titleSize === 52 && parsed.artSize === 88 && parsed.artPosition === 6) || (parsed.titleSize === 48 && parsed.artSize === 82 && parsed.artPosition === 8);
-      const restored = currentSaved ? parsed : { ...parsed, ...(wasPreviousDefault ? { titleSize: defaults.titleSize } : {}), ...(originalFont ? { font: originalFont } : {}) };
+      const restored = currentSaved ? parsed : { ...parsed, font: defaults.font, titleSize: defaults.titleSize };
       const timer = window.setTimeout(() => {
         setSettings(restored);
         applySettings(restored);
