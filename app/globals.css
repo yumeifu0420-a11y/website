@@ -35,7 +35,8 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline
 
 .hero { position: relative; min-height: min(940px, 100dvh); overflow: hidden; isolation: isolate; background-color: #fbf6ea; background-image: radial-gradient(circle at 55% 18%, rgba(255,252,246,.82), transparent 48%), linear-gradient(180deg,#fcf8ef 0%,#fbf6eb 58%,#f3ebdf 100%); }
 .hero-art { position: absolute; right: -12%; bottom: var(--hero-art-bottom, 8%); z-index: -1; width: var(--hero-art-width, 82%); height: auto; object-fit: contain; object-position: right bottom; transform: rotate(-1.8deg); transform-origin: right bottom; }
-.hero-jellyfish { position: absolute; top: 28%; right: 37%; z-index: -1; width: 142px; height: auto; opacity: .46; transform: rotate(4deg); filter: saturate(.72); clip-path: polygon(0 36%,55% 36%,55% 18%,100% 18%,100% 100%,0 100%); }
+.hero-jellyfish { position: absolute; top: 28%; right: 37%; z-index: -1; width: 142px; height: auto; opacity: .46; transform: rotate(4deg); transform-origin: 52% 62%; filter: saturate(.72); clip-path: polygon(0 36%,55% 36%,55% 18%,100% 18%,100% 100%,0 100%); animation: jellyfish-drift 7.5s ease-in-out infinite alternate; }
+@keyframes jellyfish-drift { 0% { opacity: .38; transform: translate3d(-4px,7px,0) rotate(2.5deg) scale(.98); } 52% { opacity: .48; transform: translate3d(3px,-5px,0) rotate(4.5deg) scale(1.01); } 100% { opacity: .42; transform: translate3d(8px,-11px,0) rotate(6deg) scale(1.025); } }
 .hero-copy { --hero-copy-width: 520px; width: min(1240px, calc(100% - 80px)); margin: 0 auto; padding-top: clamp(150px, 18vh, 190px); }
 .hero-name, .section-kicker { margin: 0 0 18px; color: var(--blue); font-family: "Avenir Next", "Helvetica Neue", var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
 .hero h1 { max-width: 13em; margin: 0; font-family: var(--hero-title-font,var(--hand)); font-size: min(var(--hero-title-size,44px),11vw); font-weight: 400; letter-spacing: .035em; line-height: 1.2; text-wrap: balance; }
@@ -191,4 +192,5 @@ footer p { margin: 0; } footer p:nth-child(2) { text-align: center; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal, .skip-link, .primary-button, .work-links > a, .issue-grid a { transition-duration: 1ms; transform: none; }
+  .hero-jellyfish { animation: none; }
 }

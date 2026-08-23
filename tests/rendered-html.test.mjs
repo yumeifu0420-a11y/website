@@ -74,6 +74,8 @@ test("hero copy keeps a protected text column beside the illustration", async ()
   assert.match(css, /\.hero-intro::before\s*\{[^}]*aged-paper-strip\.png[^}]*mask-image:\s*linear-gradient/s);
   assert.match(css, /\.hero-jellyfish\s*\{/);
   assert.match(css, /\.hero-jellyfish\s*\{[^}]*right:\s*37%[^}]*clip-path:/s);
+  assert.match(css, /\.hero-jellyfish\s*\{[^}]*animation:\s*jellyfish-drift/s);
+  assert.match(css, /@keyframes jellyfish-drift/);
   assert.match(css, /\.hero-intro::before\s*\{[^}]*sepia\(\.28\)/s);
   assert.match(css, /\.hero-intro::after\s*\{/);
   assert.match(css, /\.hero-art\s*\{[^}]*right:\s*-12%[^}]*bottom:\s*var\(--hero-art-bottom,\s*8%\)[^}]*width:\s*var\(--hero-art-width,\s*82%\)[^}]*rotate\(-1\.8deg\)/s);
@@ -92,6 +94,10 @@ test("a local hero editor exposes typography and illustration controls", async (
   assert.match(editor, /localStorage/);
   assert.match(editor, /恢复默认/);
   assert.match(editor, /titleSize:\s*44/);
+  assert.match(editor, /yumei-hero-settings-v5/);
+  assert.match(editor, /legacyStorageKey\s*=\s*"yumei-hero-settings-v4"/);
+  assert.match(editor, /originalFontStorageKey\s*=\s*"yumei-hero-settings-v3"/);
+  assert.doesNotMatch(editor, /font:\s*defaults\.font/);
   assert.match(editor, /artSize:\s*82/);
   assert.match(editor, /wasPreviousDefault/);
   assert.doesNotMatch(editor, /志莽行书|龙藏手书|刘建毛草|艺术手写/);
